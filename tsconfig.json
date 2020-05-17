@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
-    "module": "commonjs",
-    "outDir": "../../dist/server",
+    "outDir": "./dist/",
     "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es6",
     "jsx": "react",
     "esModuleInterop": true
   },
-  "include": ["**/*.tsx"],
-  "exclude": ["../../node_modules"]
+  "include": ["src"]
 }

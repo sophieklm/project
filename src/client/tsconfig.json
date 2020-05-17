@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "target": "ES3",
-    "module": "commonjs",
-    "jsx": "react",
-    "outDir": "../../dist/client"
-  },
-  "include": ["**/*.tsx"]
-}
