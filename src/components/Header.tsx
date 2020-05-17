@@ -1,0 +1,14 @@
+import * as React from "react";
+import { Link } from "react-router-dom";
+
+const Header = () => {
+  return (
+    <div className="ui secondary pointing large menu inverted teal">
+      <Link to="/" className="header item">
+        Streamr
+      </Link>
+    </div>
+  );
+};
+
+export default Header;
