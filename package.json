@@ -16,6 +16,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
     "@types/socket.io": "^2.1.5",
+    "@types/socket.io-client": "^1.4.33",
     "nodemon": "^2.0.4",
     "typescript": "^3.9.2"
   },
@@ -26,6 +27,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
   }
 }
