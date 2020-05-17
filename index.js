@@ -14,7 +14,9 @@ server.listen(port, () => {
 });
 
 const getApiAndEmit = (socket) => {
-  const response = new Date();
+  const response = new Date().toLocaleString([], {
+    timeZone: "Europe/London",
+  });
   // Emitting a new message. Will be consumed by the client
   socket.emit("FromAPI", response);
 };
