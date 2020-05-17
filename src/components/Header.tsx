@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div className="ui secondary pointing large menu inverted teal">
       <Link to="/" className="header item">
-        Streamr
+        Project
       </Link>
     </div>
   );
