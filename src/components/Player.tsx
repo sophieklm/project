@@ -21,7 +21,7 @@ const Player = (props: PlayerProps) => {
   };
 
   return (
-    <div className="App">
+    <div className="Player">
       <div className="main-wrapper">
         <div className="now-playing__img">
           <img src={props.item.album.images[0].url} />
@@ -34,7 +34,6 @@ const Player = (props: PlayerProps) => {
           <div className="now-playing__status">
             {props.is_playing ? "Playing" : "Paused"}
           </div>
-          <div>{props}</div>
           <div className="progress">
             <div className="progress__bar" style={progressBarStyles} />
           </div>

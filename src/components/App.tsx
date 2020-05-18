@@ -28,10 +28,10 @@ class App extends React.Component<{}, { response: string }> {
         <BrowserRouter>
           <Header />
           <div className="ui container segment">
-            <h4 className="ui header">
+            {/* <h4 className="ui header">
               It's{" "}
               <Moment parse="YYYY-MM-DD HH:mm:ss">{this.state.response}</Moment>
-            </h4>
+            </h4> */}
             <Spotify />
             <Switch>
               <Route path="/" exact />

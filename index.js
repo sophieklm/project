@@ -25,10 +25,10 @@ let interval;
 
 io.on("connection", (socket) => {
   console.log("connected");
-  if (interval) {
-    clearInterval(interval);
-  }
-  interval = setInterval(() => getApiAndEmit(socket), 1000);
+  // if (interval) {
+  //   clearInterval(interval);
+  // }
+  // interval = setInterval(() => getApiAndEmit(socket), 1000);
   socket.on("disconnect", () => {
     console.log("Client disconnected");
     clearInterval(interval);

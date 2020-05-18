@@ -1,6 +1,7 @@
 import React from "react";
 import * as $ from "jquery";
 import Player from "./Player";
+import Playlists from "./Playlists";
 
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 const clientId = process.env.SPOTIFY_CLIENT_ID;
@@ -26,7 +27,13 @@ window.location.hash = "";
 
 class Spotify extends React.Component<
   {},
-  { token: string; item: any; is_playing: string; progress_ms: number }
+  {
+    token: string;
+    item: any;
+    is_playing: string;
+    progress_ms: number;
+    playlist_items: [];
+  }
 > {
   constructor(props: any) {
     super(props);
@@ -42,12 +49,13 @@ class Spotify extends React.Component<
       },
       is_playing: "Paused",
       progress_ms: 0,
+      playlist_items: [],
     };
     this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
+    this.getPlaylists = this.getPlaylists.bind(this);
   }
 
   getCurrentlyPlaying(token: string) {
-    console.log(token);
     // Make a call using the token
     $.ajax({
       url: "https://api.spotify.com/v1/me/player",
@@ -65,6 +73,22 @@ class Spotify extends React.Component<
     });
   }
 
+  getPlaylists(token: string) {
+    // Make a call using the token
+    $.ajax({
+      url: "https://api.spotify.com/v1/me/playlists",
+      type: "GET",
+      beforeSend: (xhr: any) => {
+        xhr.setRequestHeader("Authorization", "Bearer " + token);
+      },
+      success: (data: any) => {
+        this.setState({
+          playlist_items: data.items,
+        });
+      },
+    });
+  }
+
   componentDidMount() {
     // Set token
     let _token = hash.access_token;
@@ -72,6 +96,8 @@ class Spotify extends React.Component<
       this.setState({
         token: _token,
       });
+      this.getCurrentlyPlaying(_token);
+      // this.getPlaylists(_token);
     }
   }
 
@@ -96,6 +122,11 @@ class Spotify extends React.Component<
                 is_playing={this.state.is_playing}
                 progress_ms={this.state.progress_ms}
               />
+            )}
+          </div>
+          <div className="ui container segment">
+            {this.state.token && (
+              <Playlists playlist_items={this.state.playlist_items} />
             )}
           </div>
         </header>
