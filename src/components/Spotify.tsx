@@ -103,7 +103,7 @@ class Spotify extends React.Component<
 
   render() {
     return (
-      <div className="ui center aligned segment">
+      <div className="ui attached center aligned segment">
         {!this.state.token && (
           <a
             className="ui button teal"

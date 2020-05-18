@@ -21,20 +21,16 @@ const Player = (props: PlayerProps) => {
   };
 
   return (
-    <div className="Player">
-      <div className="main-wrapper">
-        <div className="now-playing__img">
+    <div className="ui items">
+      <div className="item">
+        <div className="image">
           <img src={props.item.album.images[0].url} />
         </div>
-        <div className="now-playing__side">
-          <div className="now-playing__name">{props.item.name}</div>
-          <div className="now-playing__artist">
-            {props.item.artists[0].name}
-          </div>
-          <div className="now-playing__status">
-            {props.is_playing ? "Playing" : "Paused"}
-          </div>
-          <div className="progress">
+        <div className="content">
+          <div className="header">{props.item.name}</div>
+          <div className="meta">{props.item.artists[0].name}</div>
+          <div className="meta">{props.is_playing ? "Playing" : "Paused"}</div>
+          <div className="extra">
             <div className="progress__bar" style={progressBarStyles} />
           </div>
         </div>
