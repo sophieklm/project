@@ -103,33 +103,36 @@ class Spotify extends React.Component<
 
   render() {
     return (
-      <div className="Spotify">
-        <header className="Spotify-header">
-          <div className="ui container segment">
-            {!this.state.token && (
-              <a
-                className="btn btn--loginApp-link"
-                href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-                  "%20"
-                )}&response_type=token&show_dialog=true`}
-              >
-                Login to Spotify
-              </a>
-            )}
-            {this.state.token && (
-              <Player
-                item={this.state.item}
-                is_playing={this.state.is_playing}
-                progress_ms={this.state.progress_ms}
-              />
-            )}
+      <div className="ui center aligned segment">
+        {!this.state.token && (
+          <a
+            className="ui button teal"
+            href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
+              "%20"
+            )}&response_type=token&show_dialog=true`}
+          >
+            Login to Spotify
+          </a>
+        )}
+        {this.state.token && (
+          <div className="ui two column very relaxed grid">
+            <div className="column">
+              {this.state.token && (
+                <Playlists playlist_items={this.state.playlist_items} />
+              )}
+            </div>
+            <div className="column">
+              {this.state.token && (
+                <Player
+                  item={this.state.item}
+                  is_playing={this.state.is_playing}
+                  progress_ms={this.state.progress_ms}
+                />
+              )}
+            </div>
+            <div className="ui inverted vertical divider"></div>
           </div>
-          <div className="ui container segment">
-            {this.state.token && (
-              <Playlists playlist_items={this.state.playlist_items} />
-            )}
-          </div>
-        </header>
+        )}
       </div>
     );
   }
