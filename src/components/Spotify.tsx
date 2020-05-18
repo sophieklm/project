@@ -97,7 +97,7 @@ class Spotify extends React.Component<
         token: _token,
       });
       this.getCurrentlyPlaying(_token);
-      // this.getPlaylists(_token);
+      this.getPlaylists(_token);
     }
   }
 
