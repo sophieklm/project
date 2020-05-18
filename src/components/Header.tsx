@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <div className="ui secondary pointing large menu inverted teal">
-      <Link to="/" className="header item">
+      <Link to="/" className="header item" id="fonts">
         Project
       </Link>
     </div>

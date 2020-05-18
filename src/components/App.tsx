@@ -6,31 +6,39 @@ import Moment from "react-moment";
 
 const ENDPOINT = "http://127.0.0.1:3000";
 
-const App = () => {
-  const [response, setResponse] = useState("");
+class App extends React.Component<{}, { response: string }> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      response: "",
+    };
+  }
 
-  useEffect(() => {
+  componentDidMount() {
     const socket = socketIOClient(ENDPOINT);
     socket.on("FromAPI", (data: any) => {
-      setResponse(data);
+      this.setState({ response: data });
     });
-  }, []);
+  }
 
-  return (
-    <div className="ui container">
-      <BrowserRouter>
-        <Header />
-        <div className="ui container segment">
-          <h4 className="ui header">
-            It's <Moment parse="YYYY-MM-DD HH:mm:ss">{response}</Moment>
-          </h4>
-          <Switch>
-            <Route path="/" exact />
-          </Switch>
-        </div>
-      </BrowserRouter>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div className="ui container">
+        <BrowserRouter>
+          <Header />
+          <div className="ui container segment">
+            <h4 className="ui header">
+              It's{" "}
+              <Moment parse="YYYY-MM-DD HH:mm:ss">{this.state.response}</Moment>
+            </h4>
+            <Switch>
+              <Route path="/" exact />
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </div>
+    );
+  }
+}
 
 export default App;
