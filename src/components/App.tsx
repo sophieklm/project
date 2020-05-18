@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./Header";
+import Spotify from "./Spotify";
 import socketIOClient from "socket.io-client";
 import Moment from "react-moment";
 
@@ -31,6 +32,7 @@ class App extends React.Component<{}, { response: string }> {
               It's{" "}
               <Moment parse="YYYY-MM-DD HH:mm:ss">{this.state.response}</Moment>
             </h4>
+            <Spotify />
             <Switch>
               <Route path="/" exact />
             </Switch>
